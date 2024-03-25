@@ -46,10 +46,16 @@ not necessarily updated regularly.
 
 CRTomo has reached a mature state and at this point new features are only added
 sporadically. If you are looking for a well-tested 2D/2.5D complex resistivity
-inversion code, CRTomo could be something for you. If you are new to electrical
+inversion code, CRTomo could be something for you.
+
+If you are new to electrical
 inversion and are looking for a general purpose inversion code/framework, have
-a look at PyGimli (www.pygimli.org) and its associated electrical inversion
-framework BERT (https://gitlab.com/resistivity-net/bert).
+a look at:
+
+* ResIPy: https://resipy.org/getting-started.html
+* PyGimli: (www.pygimli.org) and its associated electrical inversion framework
+  BERT (https://gitlab.com/resistivity-net/bert).
+
 
 ## Getting help
 
