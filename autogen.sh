@@ -17,6 +17,9 @@ cd src
 ../scripts/get_git_version.sh
 cd ..
 
+# required for autoreconf/automake ??
+mkdir -p config
+
 touch NEWS ChangeLog
 
 echo -n "aclocal... "
