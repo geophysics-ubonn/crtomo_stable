@@ -1,8 +1,9 @@
 # CRTomo - Complex Resistivity Tomography
 
- [!WARNING]
- CRTomo is a legacy research code - use it for reference, or after contacting
- the authors. Otherwise, please use actively maintained alternatives!
+>[!WARNING]
+>CRTomo is a legacy research code - use it for reference, or after contacting
+>the authors with regard to a special use case. Otherwise, please use actively
+> maintained alternatives!
 
 <img src="frontcover/front_inversion1.jpg" />
 
