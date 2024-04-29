@@ -19,10 +19,7 @@ jobs:
       run: sudo apt -y update && sudo apt install autotools-dev gfortran dpkg-dev automake autoconf debhelper quilt
 
     - name: Prepare configuration files
-      run: CRT_PREFIX="stable" ./autogen.sh
-
-    - name: Re-run ./configure
-      run: FCFLAGS="-O2 -march=x86-64 -fbacktrace" LDFLAGS="-static-libgcc -static -fopenmp" ./configure
+      run: FCFLAGS="-O2 -march=x86-64 -fbacktrace" LDFLAGS="-static-libgcc -static -fopenmp" CRT_PREFIX="stable" ./autogen.sh
 
     - name: Build
       run: make -j 2
