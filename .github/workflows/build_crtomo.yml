@@ -21,6 +21,9 @@ jobs:
     - name: Prepare configuration files
       run: CRT_PREFIX="stable" ./autogen.sh
 
+    - name: Re-run ./configure
+      run: FCFLAGS="-O2 -march=x86-64 -fbacktrace" LDFLAGS="-static-libgcc -static -fopenmp" ./configure
+
     - name: Build
       run: make -j 2
 
