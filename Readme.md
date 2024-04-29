@@ -1,5 +1,10 @@
 # CRTomo - Complex Resistivity Tomography
 
+>[!WARNING]
+>CRTomo is a legacy research code - use it for reference, or after contacting
+>the authors with regard to a special use case. Otherwise, please use actively
+> maintained alternatives!
+
 <img src="frontcover/front_inversion1.jpg" />
 
 CRTomo is a finite-element forward (CRMod) and inversion (CRTomo) code for
@@ -46,10 +51,16 @@ not necessarily updated regularly.
 
 CRTomo has reached a mature state and at this point new features are only added
 sporadically. If you are looking for a well-tested 2D/2.5D complex resistivity
-inversion code, CRTomo could be something for you. If you are new to electrical
+inversion code, CRTomo could be something for you.
+
+If you are new to electrical
 inversion and are looking for a general purpose inversion code/framework, have
-a look at PyGimli (www.pygimli.org) and its associated electrical inversion
-framework BERT (https://gitlab.com/resistivity-net/bert).
+a look at:
+
+* ResIPy: https://resipy.org/getting-started.html
+* PyGimli: (www.pygimli.org) and its associated electrical inversion framework
+  BERT (https://gitlab.com/resistivity-net/bert).
+
 
 ## Getting help
 

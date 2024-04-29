@@ -1,0 +1,75 @@
+name: Build Debian image using github actions
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_crtomo:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: ls1
+      run: ls
+
+    - name: Install dependencies
+      run: sudo apt -y update && sudo apt install autotools-dev gfortran dpkg-dev automake autoconf debhelper quilt
+
+    - name: Prepare configuration files
+      run: CRT_PREFIX="stable" ./autogen.sh
+
+    - name: Build
+      run: make -j 2
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: CRTomo_binaries
+        path: |
+            src/CRMod_stable
+            src/CRTomo_stable
+            cutmckee/CutMcK_stable
+
+    - name: Build debian package
+      run: ./prep_deb_package.sh
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Debian-Image-with-source-package
+        path: |
+            package/crtomomod_*
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: Debian-Image
+        path: |
+            package/crtomomod_*.deb
+
+  do_release:
+    runs-on: ubuntu-22.04
+    needs:
+      - build_crtomo
+    steps:
+      - name: Clone workflow repository
+        uses: actions/checkout@v3
+      - name: Download image artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+      - name: Display structure of downloaded files
+        run: ls -R artifacts/
+      - name: Make release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          draft: true
+          files: |
+            artifacts/CRTomo_binaries/src/CRMod_stable
+            artifacts/CRTomo_binaries/src/CRTomo_stable
+            artifacts/CRTomo_binaries/cutmckee/CutMcK_stable
+            artifacts/Debian-Image-with-source-package/*
+
